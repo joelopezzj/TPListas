@@ -38,7 +38,7 @@ int main()
     mostrarLista(lista);
     system("pause");
     printf("\n===================\n");
-    lista = eliminarNodoCondicion(lista, 40);
+    lista = eliminarNodoCondicion(lista, 19);
     mostrarLista(lista);
 
 }
@@ -234,9 +234,9 @@ nodo *eliminarNodoCondicion(nodo *lista, int condicion)
 
     while(act != NULL)
     {
-        if(act->dato.edad < condicion)
+        if(act->dato.edad == condicion)
         {
-            aux = ant;
+            aux = act;
             if(ant == NULL) //Si el primer nodo cumple con la condicion
             {
                 lista = lista->siguiente;
@@ -245,7 +245,7 @@ nodo *eliminarNodoCondicion(nodo *lista, int condicion)
             else
             {
             //Si el nodo a eliminar es intermedio
-                ant = act;
+                ant->siguiente = act->siguiente;
                 act = act->siguiente;
             }
             free(aux);
